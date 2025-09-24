@@ -9,5 +9,5 @@
         homeDirectory = "/home/alek";
 
         stateVersion = "23.11";
-    }
+    };
 }
