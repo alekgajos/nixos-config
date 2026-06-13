@@ -10,31 +10,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
-	cursor = {
-		url = "github:omarcresp/cursor-flake/main";
-		inputs.nixpkgs.follows = "nixpkgs";
-	};
-
-	quickshell = {
-		url = "github:quickshell-mirror/quickshell";
-		inputs.nixpkgs.follows = "nixpkgs";
-	};
-
-	niri = {
-		url = "github:sodiboo/niri-flake";
-		inputs.nixpkgs.follows = "nixpkgs";
-	};
-
-	dankMaterialShell = {
-		url = "github:AvengeMedia/DankMaterialShell";
-		inputs.nixpkgs.follows = "nixpkgs";
-	};
-
-    antigravity-nix = {
-      url = "github:jacopone/antigravity-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zig-overlay = {
       url = "github:mitchellh/zig-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,10 +23,6 @@
     zls = {
       url = "github:zigtools/zls";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    neovim-nightly-overlay = {
-        url = "github:nix-community/neovim-nightly-overlay";
     };
 
     };                                      

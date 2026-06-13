@@ -1,17 +1,17 @@
 { inputs, lib, pkgs, ... }:
 {
 
-  nixpkgs.overlays = [
-    inputs.neovim-nightly-overlay.overlays.default
-  ];
+  # nixpkgs.overlays = [
+  #   inputs.neovim-nightly-overlay.overlays.default
+  # ];
 
 
 	imports = [
 		# inputs.niri.homeModules.niri
-		inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+		# inputs.dankMaterialShell.homeModules.dankMaterialShell.default
 		# inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
 	];
-	programs.dank-material-shell.enable = true;
+	# programs.dank-material-shell.enable = true;
 	# programs.niri.enable = true;
 
 	systemd.user.sessionVariables = {
@@ -28,28 +28,29 @@
 			scala-dev = "nix develop github:typelevel/typelevel-nix#application";
 			chrome-root = "sudo -E google-chrome-stable  --no-sandbox -–ozone-platform=wayland";
 		};
+
+    bashrcExtra = ''
+      # rust
+      . "$HOME/.cargo/env"
+      # Amp CLI
+      export PATH="$HOME/.local/bin:$PATH"
+    '';
 	};
 
 	home = {
 		packages = [
-			pkgs.hello
-			pkgs.kdePackages.qtmultimedia
-			inputs.cursor.packages.${pkgs.system}.default
-			pkgs.xdg-desktop-portal-gtk
-			# pkgs.xdg-desktop-portal-wlr
-			pkgs.xdg-desktop-portal-gnome
-			pkgs.xdg-desktop-portal
-			pkgs.acpi
-			pkgs.kitty
-			pkgs.python313
-			pkgs.bc
+      pkgs.home-manager
 			pkgs.lazygit
-			pkgs.smile
 			pkgs.zed-editor
 			pkgs.gnuradio
-			inputs.antigravity-nix.packages.${pkgs.system}.default
 			pkgs.zigpkgs.master
+			inputs.zls.packages.${pkgs.system}.zls
 			pkgs.neovim
+      pkgs.tree-sitter
+      pkgs.vimPlugins.blink-cmp
+      pkgs.darktable
+      pkgs.kdePackages.gwenview
+      pkgs.cmake
 		];
 
 
@@ -72,29 +73,29 @@
 
 	xdg.enable = true;
 
-	xdg.portal = {
-		enable = true;
-		# xdgOpenUsePortal = true;
-
-		# config.niri = {
-		# 	default = ["gnome" "gtk"];
-		# 	"org.freedesktop.impl.portal.Access" = "gtk";
-		# 	"org.freedesktop.impl.portal.FileChooser" = "gtk";
-		# 	"org.freedesktop.impl.portal.ScreenCast" = "gnome";
-		# 	"org.freedesktop.impl.portal.Secret" = "gnome-keyring";
-		# };
-		#
-		extraPortals = [
-			pkgs.xdg-desktop-portal-gnome
-			pkgs.xdg-desktop-portal-gtk
-		];
-		# configPackages = [
-		# 	pkgs.xdg-desktop-portal-gnome
-		# 	pkgs.xdg-desktop-portal-gtk
-		# ];
-
-		# config.common.default = "gtk";
-	};
+	# xdg.portal = {
+	# 	enable = true;
+	# 	# xdgOpenUsePortal = true;
+	#
+	# 	# config.niri = {
+	# 	# 	default = ["gnome" "gtk"];
+	# 	# 	"org.freedesktop.impl.portal.Access" = "gtk";
+	# 	# 	"org.freedesktop.impl.portal.FileChooser" = "gtk";
+	# 	# 	"org.freedesktop.impl.portal.ScreenCast" = "gnome";
+	# 	# 	"org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+	# 	# };
+	# 	#
+	# 	# extraPortals = [
+	# 	# 	pkgs.xdg-desktop-portal-gnome
+	# 	# 	pkgs.xdg-desktop-portal-gtk
+	# 	# ];
+	# 	# configPackages = [
+	# 	# 	pkgs.xdg-desktop-portal-gnome
+	# 	# 	pkgs.xdg-desktop-portal-gtk
+	# 	# ];
+	#
+	# 	# config.common.default = "gtk";
+	# };
 
 
 }
